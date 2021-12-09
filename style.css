@@ -1,0 +1,98 @@
+{
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+}
+
+#bannerTop {
+    height: 110px;
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+.bannerImage {
+    filter: blur(2px);
+    background-image: url(images/wave.jpg);
+    background-position: center;
+    background-repeat: repeat-x;
+    color: white;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    font-size: 2.5em;
+    text-align: center;
+    line-height: 110px;
+}
+
+.bannerTitle {
+    color: white;
+    top: 0px;
+    display: inline-block;
+    width: 100%;
+    font-size: 2.5em;
+    text-align: center;
+    line-height: 110px;
+    font-family: cursive;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    text-shadow: 2px 3px black;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    flex-grow: 1;
+    background-image: url(images/columns.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.middle {
+    flex-grow: 0;
+    flex-basis: 70%;
+    background-color: rgb(255, 253, 224);
+}
+
+#content {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+#topBar {
+    width: 100%;
+    margin: 0;
+    background-color: #9FE2BF;
+    border-bottom: 2px solid black;
+    display: table;
+    table-layout: fixed;
+}
+
+.navButton {
+    padding: 8px;
+    display: table-cell;
+    text-align: center;
+    font-size: 1.2em;
+    border: 2px outset;
+    font-family: cursive;
+    cursor: pointer;
+}
+
+.navButton:hover {
+    background-color: #76b092;
+    color: white;
+    text-decoration: underline;
+}

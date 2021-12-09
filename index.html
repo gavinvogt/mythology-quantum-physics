@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- By Gavin Vogt -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Research Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/atom_icon.png">
+  </head>
+
+  <body>
+      <div id="bannerTop">
+          <div class="bannerImage"></div>
+          <span class="bannerTitle">
+              Greek Philosophy and Quantum Physics
+          </span>
+      </div>
+
+      <div class="container">
+          <div class="sidebar" style="background-position: left;"></div>
+          <div class="middle">
+              <div id="topBar">
+                  <div class="navButton" id="about" onclick="setContent(this)">
+                      About
+                  </div>
+                  <div class="navButton" id="conclusions" onclick="setContent(this)">
+                      Conclusions
+                  </div>
+                  <div class="navButton" id="significance" onclick="setContent(this)">
+                      Significance
+                  </div>
+                  <div class="navButton" id="works_cited" onclick="setContent(this)">
+                      Works Cited
+                  </div>
+              </div>
+              <iframe id="content"></iframe>
+          </div>
+          <div class="sidebar" style="background-position: right;"></div>
+      </div>
+
+      <script>
+          var bannerTop = document.getElementById('bannerTop');
+          var topBar = document.getElementById('topBar');
+          var contentFrame = document.getElementById('content');
+          setContent(document.getElementById(sessionStorage.getItem('currentPage') ?? 'about'));
+          contentFrame.height = `${calcContentHeight()}px`;
+
+          function calcContentHeight() {
+              let totalHeight = window.innerHeight;
+              let windowBottom = Math.round(document.body.getBoundingClientRect().bottom);
+              let contentTop = Math.round(contentFrame.getBoundingClientRect().top);
+              let height = windowBottom - contentTop - 5;
+              if (height > contentFrame.offsetHeight) {
+                  return height;
+              } else {
+                  return contentFrame.offsetHeight;
+              }
+          }
+
+          function setContent(button) {
+              // Update the content shown
+              contentFrame.src = `${button.id}.html`;
+              let oldId = sessionStorage.getItem('currentPage');
+
+              // Update the button colors
+              if (oldId && (oldId !== button.id)) {
+                  document.getElementById(oldId).style.backgroundColor = '';
+              }
+              sessionStorage.setItem('currentPage', button.id);
+              button.style.backgroundColor = 'rgb(250, 211, 165)';
+          }
+      </script>
+  </body>
+</html>
